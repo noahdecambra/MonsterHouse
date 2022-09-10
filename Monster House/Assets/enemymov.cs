@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class enemymov : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed;
+    public float baseSpeed = 5f;
     private Transform target;
     private int wavePointIndex = 0;
 
     void Start()
     {
+        speed = baseSpeed;
         target = wavePoints.points[0];
     }
 
@@ -30,8 +32,12 @@ public class enemymov : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        wavePointIndex++;
-        target = wavePoints.points[wavePointIndex];
+        else
+        {
+            wavePointIndex++;
+            target = wavePoints.points[wavePointIndex];
+        }
+       
     }
 }
 

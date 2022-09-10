@@ -7,10 +7,14 @@ public class EnemyBase : MonoBehaviour
     public int health = 100;
 
     public bool damageOverTime;
+
+   // [SerializeField]private float slowDuration;
+
     // Start is called before the first frame update
     void Start()
     {
         damageOverTime = false;
+       
     }
 
     // Update is called once per frame
@@ -48,4 +52,26 @@ public class EnemyBase : MonoBehaviour
            takeDamage(damage);
        }
     }
+
+   public void SlowEffect(float amount, float duration)
+   {
+      // slowDuration += duration;
+       StartCoroutine(SlowCountdown(amount, duration));
+   }
+   
+   IEnumerator SlowCountdown(float amount, float duration)
+   {
+       var movementScript = gameObject.GetComponent<enemymov>();
+       if (movementScript != null)
+       {
+
+           if (movementScript.speed>= movementScript.baseSpeed*.25)
+           {
+               movementScript.speed /= amount;
+           }
+           yield return new WaitForSeconds(duration);
+
+           movementScript.speed *= amount;
+       }
+   }
 }
