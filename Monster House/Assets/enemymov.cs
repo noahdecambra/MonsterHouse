@@ -8,22 +8,24 @@ public class enemymov : MonoBehaviour
     public float baseSpeed = 5f;
     private Transform target;
     private int wavePointIndex = 0;
+    public bool canMove;
 
     void Start()
     {
         speed = baseSpeed;
         target = wavePoints.points[0];
+        canMove = true;
     }
 
     void Update()
     {
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
-        if (Vector3.Distance(transform.position, target.position) <= 0.2f)
+        if (canMove)
         {
-            GetNextWaypoint();
+            Move();
         }
+        
+
+      
     }
 
     void GetNextWaypoint()
@@ -39,5 +41,18 @@ public class enemymov : MonoBehaviour
         }
        
     }
+
+    void Move()
+    {
+        Vector3 dir = target.position - transform.position;
+        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+
+        if (Vector3.Distance(transform.position, target.position) <= 0.2f)
+        {
+            GetNextWaypoint();
+        }
+    }
+
+  
 }
 

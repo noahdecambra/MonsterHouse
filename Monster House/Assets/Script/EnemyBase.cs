@@ -8,6 +8,9 @@ public class EnemyBase : MonoBehaviour
 
     public bool damageOverTime;
 
+    public float damage;
+    public float attackRate;
+
    // [SerializeField]private float slowDuration;
 
     // Start is called before the first frame update
