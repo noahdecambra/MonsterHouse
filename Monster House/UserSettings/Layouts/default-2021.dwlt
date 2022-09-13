@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -317,36 +317,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/Textures
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/Textures
   m_LastFoldersGridSize: -1
   m_LastProjectPath: A:\Unity Projects\MonsterHouse\Monster House
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9c5b0000
-    m_LastClickedID: 23452
-    m_ExpandedIDs: 00000000065a000000ca9a3b
+    m_SelectedIDs: 205a0000
+    m_LastClickedID: 23072
+    m_ExpandedIDs: 000000000e5a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Scenes
-      m_OriginalName: Scenes
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 23056
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
@@ -360,7 +360,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000065a0000
+    m_ExpandedIDs: 000000000e5a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -788,13 +788,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.032450262, y: 0.96128863, z: -0.12940317, w: -0.24105808}
+    m_Target: {x: -0.014494647, y: 0.98546445, z: -0.123638436, w: -0.11552813}
     speed: 2
-    m_Value: {x: -0.032812104, y: 0.9611016, z: -0.13084608, w: -0.24101119}
+    m_Value: {x: -0.01449477, y: 0.9854726, z: -0.12363946, w: -0.11552909}
   m_Size:
-    m_Target: 4.7868958
+    m_Target: 5.22741
     speed: 2
-    m_Value: 5.0124564
+    m_Value: 5.22741
   m_Ortho:
     m_Target: 0
     speed: 2
