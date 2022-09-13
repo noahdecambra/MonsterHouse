@@ -29,6 +29,7 @@ public class enemymov : MonoBehaviour
         if (wavePointIndex >= wavePoints.points.Length - 1)
         {
             Destroy(gameObject);
+            return;
         }
         wavePointIndex++;
         target = wavePoints.points[wavePointIndex];
