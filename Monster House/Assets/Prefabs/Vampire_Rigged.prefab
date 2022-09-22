@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 5642160225347019809}
   - component: {fileID: 2519851846462802098}
   - component: {fileID: -7220858712842877519}
+  - component: {fileID: 5245531536343186693}
   m_Layer: 3
   m_Name: Vampire_Rigged
   m_TagString: Unholy
@@ -319,6 +320,23 @@ MonoBehaviour:
   damageOverTime: 0
   damage: 0
   attackRate: 0
+--- !u!114 &5245531536343186693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4866244297047214610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95c3ceec3d33e94bb41cce1744714ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  baseSpeed: 5
+  canMove: 0
+  anim: {fileID: 0}
+  rotationPoint: {fileID: 5243192494328729768}
 --- !u!1 &5778439116954703976
 GameObject:
   m_ObjectHideFlags: 0

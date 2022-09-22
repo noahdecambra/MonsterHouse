@@ -1,21 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
+public enum TurretLevel
+{
+    Level1, Level2, Level3, Level4
+}
 public class TurretController : MonoBehaviour
 {
+    public TurretSO turretStats;
+    private int _turretLevel;
     [Header("Universal Attributes")]
     [SerializeField] private Transform _target;
 
-    public float range = 15f;
+    public GameObject[] turretPrefabs;
+    //public int currentPrefab;
+    private int _upgradeCost;
+    public int upgradeCost { get; private set; }
+    private float _range = 15f;
 
    // public string enemyTag = "enemy";
-    public string[] enemyTags;
+    private string[] _enemyTags = new string[]{"Magical", "Beast", "Unholy"};
     #region Firing vars
     [Header("Shooting")]
     [SerializeField] private float _fireRate = 1f;
     private float _fireCountdown = 0f;
-    public GameObject bulletPrefab;
+    private GameObject _bulletPrefab;
     [SerializeField] private Transform _firePoint;
 
     #endregion
@@ -28,12 +40,27 @@ public class TurretController : MonoBehaviour
 
     [SerializeField] private float _rotationSpeed = 10f;
 
+  
 
+    public TurretLevel currentTurretLevel;
     #endregion
 
+    void Awake()
+    {
+        foreach (var turret in turretPrefabs)
+        {
+            turret.SetActive(false);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
+        _turretLevel = 1;
+        turretPrefabs[0].SetActive(true);
+        gameObject.name = turretStats.turretName;
+        _bulletPrefab = turretStats.bulletPrefab;
+        _range = turretStats.range;
+        _fireRate = turretStats.rateOfFire;
         _startRotation = rotationPoint.rotation;
         InvokeRepeating("UpdateTarget", 0, .5f);
     }
@@ -50,19 +77,21 @@ public class TurretController : MonoBehaviour
       }
 
       _fireCountdown -= Time.deltaTime;
+
+     
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, _range);
     }
 
     void UpdateTarget()
     {
         GameObject[] enemyGroups = null;
         List<GameObject> enemies = new List<GameObject>();
-        foreach (var tag in enemyTags)
+        foreach (var tag in _enemyTags)
         {
             enemyGroups = GameObject.FindGameObjectsWithTag(tag);
             foreach (var enemy in enemyGroups)
@@ -83,7 +112,7 @@ public class TurretController : MonoBehaviour
             }
         }
 
-        if (nearestEnemy!=null && nearestEnemyDistance <= range)
+        if (nearestEnemy!=null && nearestEnemyDistance <= _range)
         {
             _target = nearestEnemy.transform;
         }
@@ -113,11 +142,49 @@ public class TurretController : MonoBehaviour
 
     void Shoot()
     { 
-       GameObject bullet =(GameObject) Instantiate(bulletPrefab, _firePoint.position, _firePoint.rotation);
+       GameObject bullet =(GameObject) Instantiate(_bulletPrefab, _firePoint.position, _firePoint.rotation);
+       bullet.transform.parent = gameObject.transform;
        BulletController bulletController = bullet.GetComponent<BulletController>();
        if (bulletController != null)
        {
            bulletController.TargetAquisition(_target);
        }
+    }
+
+    public void Upgrade()
+    {
+        //check if can upgrade first, then proceed
+        UpgradeEffects();
+    }
+
+    private void UpgradeEffects( )
+    {
+        string turretName = gameObject.name;
+        switch (turretName)
+        {
+            case "Crossbow":
+                switch (currentTurretLevel)
+                {
+                    case TurretLevel.Level1:
+                        _turretLevel++;
+                        _range += 3;
+                        currentPrefab = turretPrefabs[0];
+                        currentTurretLevel++;
+                        break;
+                    case TurretLevel.Level2:
+                        _turretLevel++;
+                        currentPrefab = turretPrefabs[1];
+                        Instantiate(currentPrefab, gameObject.transform);
+                        currentTurretLevel++;
+                        break;
+                    case TurretLevel.Level3:
+                        _turretLevel++;
+                        currentPrefab = turretPrefabs[2];
+                        Instantiate(currentPrefab, gameObject.transform);
+                        currentTurretLevel++;
+                        break;
+                }
+                break;
+        }
     }
 }

@@ -7,6 +7,10 @@ public class TombstoneLogic : BuildableBase
 {
     public override void Effect()
     {
+        if (enemyMovement.gameObject.name=="Ghost")
+        {
+            return;
+        }
         enemyMovement.canMove = false;
         base.Effect();
         StartCoroutine(TakeDamage());
@@ -18,6 +22,5 @@ public class TombstoneLogic : BuildableBase
        {
            script.canMove = true;
        }
-       
    }
 }

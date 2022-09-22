@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7909897467312777204}
   - component: {fileID: 6428367281231598237}
   - component: {fileID: 1045117237670077842}
+  - component: {fileID: 7456443083964870638}
   m_Layer: 3
   m_Name: Frank_Rigged
   m_TagString: Unholy
@@ -136,6 +137,23 @@ MonoBehaviour:
   damageOverTime: 0
   damage: 0
   attackRate: 0
+--- !u!114 &7456443083964870638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2964790614036682509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95c3ceec3d33e94bb41cce1744714ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  baseSpeed: 5
+  canMove: 0
+  anim: {fileID: 0}
+  rotationPoint: {fileID: 2481164495198735799}
 --- !u!1 &3100346196389577723
 GameObject:
   m_ObjectHideFlags: 0

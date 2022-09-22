@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: -9058438814548763591}
   - component: {fileID: -3809188947653278895}
   - component: {fileID: -3187518353286765040}
+  - component: {fileID: 7893381412550901398}
   m_Layer: 3
   m_Name: Ghost_Rigged
   m_TagString: Unholy
@@ -160,10 +161,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.75
-  m_Height: 2
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!54 &-3809188947653278895
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -198,6 +199,23 @@ MonoBehaviour:
   damageOverTime: 0
   damage: 0
   attackRate: 0
+--- !u!114 &7893381412550901398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4215646689872608027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95c3ceec3d33e94bb41cce1744714ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  baseSpeed: 5
+  canMove: 0
+  anim: {fileID: 0}
+  rotationPoint: {fileID: 3588010974526316961}
 --- !u!1 &5330932669360018331
 GameObject:
   m_ObjectHideFlags: 0

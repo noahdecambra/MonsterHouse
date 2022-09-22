@@ -40,7 +40,7 @@ public class BulletController : MonoBehaviour
 
     }
 
-    void TargetHit()
+    public virtual void TargetHit()
     {
         Debug.Log("target reached");
         HitEffect();

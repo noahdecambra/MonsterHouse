@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: -2907431957245402717}
   - component: {fileID: 4423504209215531943}
   - component: {fileID: 3429952193187678495}
+  - component: {fileID: 7815085089704488942}
   m_Layer: 3
   m_Name: Skeleton_Rigged
   m_TagString: Unholy
@@ -609,6 +610,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7815085089704488942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7921551144607101367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95c3ceec3d33e94bb41cce1744714ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  baseSpeed: 5
+  canMove: 0
+  anim: {fileID: 0}
+  rotationPoint: {fileID: 7396265629500926733}
 --- !u!1 &9018202135401204996
 GameObject:
   m_ObjectHideFlags: 0

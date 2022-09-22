@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 4288487226922855050}
   - component: {fileID: -4049516880940725114}
   - component: {fileID: -7107355129323387281}
+  - component: {fileID: -60456528301758104}
   m_Layer: 3
   m_Name: Alien_Rigged
   m_TagString: Magical
@@ -366,6 +367,23 @@ MonoBehaviour:
   damageOverTime: 0
   damage: 0
   attackRate: 0
+--- !u!114 &-60456528301758104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690774392842298708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95c3ceec3d33e94bb41cce1744714ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  baseSpeed: 5
+  canMove: 0
+  anim: {fileID: 0}
+  rotationPoint: {fileID: 4067756988795813870}
 --- !u!1 &4630818147307081172
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,10 +28,17 @@ public class enemymov : MonoBehaviour
 
     void Update()
     {
+        anim.SetBool("Walk", canMove);
         if (canMove)
         {
-            anim.SetBool("Walk", true);
+           
             Move();
+        }
+        else
+        {
+           
+            anim.SetTrigger("Attack");
+            
         }
 
     }
