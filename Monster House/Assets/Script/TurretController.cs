@@ -16,6 +16,7 @@ public class TurretController : MonoBehaviour
     [SerializeField] private Transform _target;
 
     public GameObject[] turretPrefabs;
+    public Transform[] rotationPoints;
     //public int currentPrefab;
     private int _upgradeCost;
     public int upgradeCost { get; private set; }
@@ -57,6 +58,7 @@ public class TurretController : MonoBehaviour
     {
         _turretLevel = 1;
         turretPrefabs[0].SetActive(true);
+        _firePoint.transform.parent = turretPrefabs[0].transform;
         gameObject.name = turretStats.turretName;
         _bulletPrefab = turretStats.bulletPrefab;
         _range = turretStats.range;
@@ -70,7 +72,7 @@ public class TurretController : MonoBehaviour
     {
       RotationController();
 
-      if (_fireCountdown<=0f)
+      if (_fireCountdown<=0f && _target !=null)
       {
           Shoot();
           _fireCountdown = 1f / _fireRate;
@@ -168,19 +170,62 @@ public class TurretController : MonoBehaviour
                     case TurretLevel.Level1:
                         _turretLevel++;
                         _range += 3;
-                        currentPrefab = turretPrefabs[0];
+                        turretPrefabs[0].SetActive(true);
+                        turretPrefabs[1].SetActive(false);
+                        turretPrefabs[2].SetActive(false);
+                        rotationPoint = rotationPoints[0];
+                        _firePoint.transform.parent = turretPrefabs[0].transform;
                         currentTurretLevel++;
                         break;
                     case TurretLevel.Level2:
                         _turretLevel++;
-                        currentPrefab = turretPrefabs[1];
-                        Instantiate(currentPrefab, gameObject.transform);
+                        turretPrefabs[0].SetActive(false);
+                        turretPrefabs[1].SetActive(true);
+                        turretPrefabs[2].SetActive(false);
+                        rotationPoint = rotationPoints[1];
+                        _firePoint.transform.parent = turretPrefabs[1].transform;
                         currentTurretLevel++;
                         break;
                     case TurretLevel.Level3:
                         _turretLevel++;
-                        currentPrefab = turretPrefabs[2];
-                        Instantiate(currentPrefab, gameObject.transform);
+                        turretPrefabs[0].SetActive(false);
+                        turretPrefabs[1].SetActive(false);
+                        turretPrefabs[2].SetActive(true);
+                        rotationPoint = rotationPoints[2];
+                        _firePoint.transform.parent = turretPrefabs[2].transform;
+                        currentTurretLevel++;
+                        break;
+                }
+                break;
+            case "Garlic Cannon":
+                switch (currentTurretLevel)
+                {
+                    case TurretLevel.Level1:
+                        _turretLevel++;
+                        _range += 3;
+                        turretPrefabs[0].SetActive(true);
+                        turretPrefabs[1].SetActive(false);
+                        turretPrefabs[2].SetActive(false);
+                        rotationPoint = rotationPoints[0];
+                        _firePoint.transform.parent = turretPrefabs[0].transform;
+                        currentTurretLevel++;
+                        break;
+                    case TurretLevel.Level2:
+                        _turretLevel++;
+                        turretPrefabs[0].SetActive(false);
+                        turretPrefabs[1].SetActive(true);
+                        turretPrefabs[2].SetActive(false);
+                        rotationPoint = rotationPoints[1];
+                        _firePoint.transform.parent = turretPrefabs[1].transform;
+                        currentTurretLevel++;
+                        break;
+                    case TurretLevel.Level3:
+                        _turretLevel++;
+                        turretPrefabs[0].SetActive(false);
+                        turretPrefabs[1].SetActive(false);
+                        turretPrefabs[2].SetActive(true);
+                        rotationPoint = rotationPoints[2];
+                        _firePoint.transform.parent = turretPrefabs[2].transform;
                         currentTurretLevel++;
                         break;
                 }

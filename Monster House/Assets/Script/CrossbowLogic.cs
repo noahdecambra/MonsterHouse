@@ -22,24 +22,12 @@ public class CrossbowLogic : BulletController
        }
        if (parenTurretLevel== TurretLevel.Level4)
        {
-           
-            _pierce = true;
+            _superEffectiveMultiplier += 1;
+            //should be piercing             
        }
     }
 
-    public override void TargetHit()
-    {
-        var pierceCount = 0;
-        var pierceMax = 2;
-        if (_pierce)
-        {
-            pierceCount++;
-            if (pierceCount == pierceMax)
-            {
-                base.TargetHit();
-            }
-        }
-    }
+    
 
     public override void HitEffect()
     {
