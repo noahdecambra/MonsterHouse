@@ -9,9 +9,18 @@ public class enemymov : MonoBehaviour
     private Transform target;
     private int wavePointIndex = 0;
     public bool canMove;
+    public Animator anim;
 
     void Start()
     {
+        if (anim == null)
+        {
+            if (gameObject.GetComponent<Animator>()==null)
+            {
+                gameObject.AddComponent<Animator>();
+            }
+            anim= gameObject.GetComponent<Animator>();
+        }
         speed = baseSpeed;
         target = wavePoints.points[0];
         canMove = true;
@@ -21,6 +30,7 @@ public class enemymov : MonoBehaviour
     {
         if (canMove)
         {
+            anim.SetBool("Walk", true);
             Move();
         }
 
@@ -42,6 +52,7 @@ public class enemymov : MonoBehaviour
 
     void Move()
     {
+        
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
