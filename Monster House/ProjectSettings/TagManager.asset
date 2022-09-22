@@ -8,6 +8,7 @@ TagManager:
   - Unholy
   - Magical
   - Beast
+  - RotationPoint
   layers:
   - Default
   - TransparentFX
