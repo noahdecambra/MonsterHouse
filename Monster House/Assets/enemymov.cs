@@ -10,7 +10,7 @@ public class enemymov : MonoBehaviour
     private int wavePointIndex = 0;
     public bool canMove;
     public Animator anim;
-
+    public Transform rotationPoint;
     void Start()
     {
         if (anim == null)
@@ -55,11 +55,19 @@ public class enemymov : MonoBehaviour
         
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
+        LookController();
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
         {
             GetNextWaypoint();
         }
+    }
+
+    void LookController()
+    {
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(rotationPoint.rotation, lookRotation, Time.deltaTime*speed).eulerAngles;
+        rotationPoint.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
 }

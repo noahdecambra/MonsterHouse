@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class waveSpawner : MonoBehaviour
 {
-    public Transform enemyPrefab;
+
+    public GameObject[] baseEnemyPrefabs;
+    private GameObject _bossPrefab;
+    public GameObject[] bossEnemyPrefabs;
+    private GameObject _enemyPrefab;
 
     public Transform spawnPoint;
 
@@ -13,6 +17,8 @@ public class waveSpawner : MonoBehaviour
     public float countdown = 2f;
 
     private int waveNum = 0;
+    private int _wavesUntilBoss=5;
+    private bool _isBossWave;
 
     void Update()
     {
@@ -23,24 +29,37 @@ public class waveSpawner : MonoBehaviour
             countdown = timebtwWaves;
         }
 
-        countdown = countdown-Time.deltaTime;
+        countdown -=Time.deltaTime;
     }
 
     IEnumerator SpawnWave()
     {
         waveNum++;
-
+        _wavesUntilBoss--;
+        if (_wavesUntilBoss<=0)
+        {
+            _bossPrefab = bossEnemyPrefabs[Random.Range(0, bossEnemyPrefabs.Length)];
+            _isBossWave = true;
+            SpawnEnemy(_isBossWave);
+            _isBossWave = false;
+        }
         for (int i = 0; i < waveNum; i++)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(0.3f);
+            SpawnEnemy(_isBossWave);
+            yield return new WaitForSeconds(.3f);
         }
 
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(bool bosswave)
     {
-        Instantiate (enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        _enemyPrefab = baseEnemyPrefabs[Random.Range(0, baseEnemyPrefabs.Length)];
+        if (bosswave)
+        {
+            Instantiate(_bossPrefab, spawnPoint.position, spawnPoint.rotation);
+            _wavesUntilBoss = 5;
+        }
+        Instantiate (_enemyPrefab, spawnPoint.position, spawnPoint.rotation);
     }
 
 }

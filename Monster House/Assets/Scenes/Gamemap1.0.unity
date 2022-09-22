@@ -4564,7 +4564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687393244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.38445, y: -98.88368, z: 6.8003826}
+  m_LocalPosition: {x: -32.38445, y: -100.88368, z: 6.8003826}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9938,7 +9938,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb7aed38f1d08c4e90ab9efcdecf22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7790004547871750273, guid: 8e78f84bc5f9d034aa96283a65c47790, type: 3}
+  baseEnemyPrefabs:
+  - {fileID: 6250388527307968718, guid: feaa9f88f552bd6408db38173575eb80, type: 3}
+  - {fileID: 4866244297047214610, guid: f1fb7b46cf51faf40b89cc06c669ae6d, type: 3}
+  - {fileID: 4215646689872608027, guid: dbacff94faece1b4185be0a3d4908243, type: 3}
+  - {fileID: 3690774392842298708, guid: dca629fde41ea3047980834aae5e29af, type: 3}
+  bossEnemyPrefabs:
+  - {fileID: 6944878978745143324, guid: e3c1bdb71e9ae284fb9878bcc0f42776, type: 3}
+  - {fileID: 2964790614036682509, guid: c1d611e6e85e4cf4c8a223650f0272e7, type: 3}
+  - {fileID: 7921551144607101367, guid: 93c6438eb3a990a45ba93878d885fa50, type: 3}
   spawnPoint: {fileID: 1758948457}
   timebtwWaves: 5
   countdown: 2

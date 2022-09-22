@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 978265445757206510}
   - component: {fileID: -96659347136469304}
   - component: {fileID: 1032694037293827784}
+  - component: {fileID: 3108077335512239030}
   m_Layer: 3
   m_Name: Witch_Rigged
   m_TagString: Magical
@@ -554,6 +555,22 @@ MonoBehaviour:
   damageOverTime: 0
   damage: 0
   attackRate: 0
+--- !u!114 &3108077335512239030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6250388527307968718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72af498140d07e34f8a0cf219d9056e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  radius: 5
 --- !u!1 &7546962601494869950
 GameObject:
   m_ObjectHideFlags: 0
