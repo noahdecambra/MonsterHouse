@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class TombstoneLogic : BuildableBase
 {
+     void Start()
+    {
+       var towerscipt = gameObject.transform.parent.GetComponent<TowerController>();
+       
+    }
     public override void Effect()
     {
         if (enemyMovement.gameObject.name=="Ghost")
