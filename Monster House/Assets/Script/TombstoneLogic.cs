@@ -5,8 +5,17 @@ using UnityEngine;
 
 public class TombstoneLogic : BuildableBase
 {
+     void Start()
+    {
+       var towerscipt = gameObject.transform.parent.GetComponent<TowerController>();
+       
+    }
     public override void Effect()
     {
+        if (enemyMovement.gameObject.name=="Ghost")
+        {
+            return;
+        }
         enemyMovement.canMove = false;
         base.Effect();
         StartCoroutine(TakeDamage());
@@ -18,6 +27,5 @@ public class TombstoneLogic : BuildableBase
        {
            script.canMove = true;
        }
-       
    }
 }

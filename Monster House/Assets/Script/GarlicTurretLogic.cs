@@ -10,6 +10,26 @@ public class GarlicTurretLogic : BulletController
     private float _resistedMultiplier = .5f;
     private string _superEffectiveType = "Beast";
     private string _resistedType = "Unholy";
+
+     void Start()
+    {
+        TurretLevel parenTurretLevel = gameObject.transform.parent.GetComponent<TurretController>().currentTurretLevel;
+
+        if(parenTurretLevel== TurretLevel.Level2|| parenTurretLevel == TurretLevel.Level3 || parenTurretLevel == TurretLevel.Level4)
+        {
+            _duration += 3;
+        }
+        if (parenTurretLevel == TurretLevel.Level3 || parenTurretLevel == TurretLevel.Level4)
+        {
+            _damage += 2;
+        }
+        if (parenTurretLevel == TurretLevel.Level4)
+        {
+            _damage += 2;
+            //should be cloud 
+            
+        }
+    }
     public override void HitEffect()
     {
         _enemyScript = _target.GetComponent<EnemyBase>();

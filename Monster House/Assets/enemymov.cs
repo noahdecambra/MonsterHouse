@@ -9,9 +9,18 @@ public class enemymov : MonoBehaviour
     private Transform target;
     private int wavePointIndex = 0;
     public bool canMove;
-
+    public Animator anim;
+    public Transform rotationPoint;
     void Start()
     {
+        if (anim == null)
+        {
+            if (gameObject.GetComponent<Animator>()==null)
+            {
+                gameObject.AddComponent<Animator>();
+            }
+            anim= gameObject.GetComponent<Animator>();
+        }
         speed = baseSpeed;
         target = wavePoints.points[0];
         canMove = true;
@@ -19,9 +28,17 @@ public class enemymov : MonoBehaviour
 
     void Update()
     {
+        anim.SetBool("Walk", canMove);
         if (canMove)
         {
+           
             Move();
+        }
+        else
+        {
+           
+            anim.SetTrigger("Attack");
+            
         }
 
     }
@@ -42,13 +59,22 @@ public class enemymov : MonoBehaviour
 
     void Move()
     {
+        
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
+        LookController();
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
         {
             GetNextWaypoint();
         }
+    }
+
+    void LookController()
+    {
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(rotationPoint.rotation, lookRotation, Time.deltaTime*speed).eulerAngles;
+        rotationPoint.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
 }

@@ -1,17 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class CrossbowLogic : BulletController
 {
-    private int _damage = 10;
+    public int _damage = 5;
     private int _superEffectiveMultiplier = 2;
     private float _resistedMultiplier = .5f;
     private string _superEffectiveType = "Unholy" ;
     private string _resistedType = "Magical";
+    private bool _pierce = false;
+
+    void Start()
+    {
+       TurretLevel parenTurretLevel = gameObject.transform.parent.GetComponent<TurretController>().currentTurretLevel;
+       if (parenTurretLevel == TurretLevel.Level3|| parenTurretLevel== TurretLevel.Level4)
+       {
+           _damage += 3;
+       }
+       if (parenTurretLevel== TurretLevel.Level4)
+       {
+            _superEffectiveMultiplier += 1;
+            //should be piercing             
+       }
+    }
+
+    
+
     public override void HitEffect()
     {
+        
         _enemyScript = _target.GetComponent<EnemyBase>();
         if (_enemyScript == null)
         {
@@ -28,6 +48,7 @@ public class CrossbowLogic : BulletController
             _damage *=(int)_resistedMultiplier;
         }
         _enemyScript.DamageMonitor(_damage);
+       
         base.HitEffect();
     }
 }

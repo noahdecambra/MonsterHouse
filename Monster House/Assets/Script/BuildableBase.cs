@@ -13,13 +13,20 @@ public class BuildableBase : MonoBehaviour
     protected EnemyBase enemyHealthManager;
     protected List<enemymov> currentEnemyMoves = new List<enemymov>();
     protected List<EnemyBase> CurrentEnemyBases = new List<EnemyBase>();
-    
+    public GameObject[] buildablePrefabs;
+    public GameObject currentBuildable;
+
+     
+
     public virtual void Effect()
     {
         
     }
 
-
+    public GameObject GetCurrentBuildable()
+    {
+        return currentBuildable;
+    }
    
     void OnTriggerEnter(Collider other)
     {
@@ -41,20 +48,7 @@ public class BuildableBase : MonoBehaviour
        // }
     }
 
-  /*   void OnTriggerExit(Collider other)
-    {
-        enemyHealthManager = other.gameObject.GetComponent<EnemyBase>();
-        enemyMovement = other.gameObject.GetComponent<enemymov>();
-        if (currentEnemyMoves.Contains(enemyMovement))
-        {
-            currentEnemyMoves.Remove(enemyMovement);
-        }
-        if (CurrentEnemyBases.Contains(enemyHealthManager))
-        {
-            CurrentEnemyBases.Remove(enemyHealthManager);
-        }
 
-    } */
 
     public IEnumerator TakeDamage()
     {
@@ -73,8 +67,88 @@ public class BuildableBase : MonoBehaviour
 
         
     }
-  
 
-    
+    public void Upgrade()
+    {
+        //check if can upgrade first, then proceed
+        UpgradeEffects();
+    }
+
+    private void UpgradeEffects()
+    {
+        var currentLevel = gameObject.transform.parent.GetComponent<TowerController>().currentLevel;
+        var currentTowerLevel = gameObject.transform.parent.GetComponent<TowerController>().currentTowerLevel;
+        string turretName = gameObject.name;
+        switch (turretName)
+        {
+            case "Tombstone":
+                switch (currentLevel)
+                {
+                    case towerLevel.Level1:
+                        currentTowerLevel++;
+                        health += 10;
+                        buildablePrefabs[0].SetActive(true);
+                        buildablePrefabs[1].SetActive(false);
+                        buildablePrefabs[2].SetActive(false);
+                        currentBuildable = buildablePrefabs[0];
+                        currentLevel++;
+                        break;
+                    case towerLevel.Level2:
+                        currentTowerLevel++;
+                        health += 10;
+                        buildablePrefabs[0].SetActive(false);
+                        buildablePrefabs[1].SetActive(true);
+                        buildablePrefabs[2].SetActive(false);
+                        currentBuildable = buildablePrefabs[1];
+                        currentLevel++;
+                        break;
+                    case towerLevel.Level3:
+                        currentTowerLevel++;
+                        health += 10;
+                        buildablePrefabs[0].SetActive(false);
+                        buildablePrefabs[1].SetActive(false);
+                        buildablePrefabs[2].SetActive(true);
+                        currentBuildable = buildablePrefabs[2];
+                        currentLevel++;
+                        break;
+                }
+                break;
+            case "Sprinkler":
+                switch (currentLevel)
+                {
+                    case towerLevel.Level1:
+                        currentTowerLevel++;
+                        health += 10;
+                        buildablePrefabs[0].SetActive(true);
+                        buildablePrefabs[1].SetActive(false);
+                        buildablePrefabs[2].SetActive(false);
+                        currentBuildable = buildablePrefabs[0];
+                        currentLevel++;
+                        break;
+                    case towerLevel.Level2:
+                        currentTowerLevel++;
+                        health += 10;
+                        buildablePrefabs[0].SetActive(false);
+                        buildablePrefabs[1].SetActive(true);
+                        buildablePrefabs[2].SetActive(false);
+                        currentBuildable = buildablePrefabs[1];
+                        currentLevel++;
+                        break;
+                    case towerLevel.Level3:
+                        currentTowerLevel++;
+                        health += 10;
+                        buildablePrefabs[0].SetActive(false);
+                        buildablePrefabs[1].SetActive(false);
+                        buildablePrefabs[2].SetActive(true);
+                        currentBuildable = buildablePrefabs[2];
+                        currentLevel++;
+                        break;
+                }
+                break;
+        }
+    }
+
+
+
 
 }

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    public int health = 100;
+    public EnemySO enemyStats;
+    private enemymov enemyMovement;
+
+    public int health;
     public bool giveTickDamage;
     public bool damageOverTime;
     public float damage;
@@ -15,8 +18,20 @@ public class EnemyBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.name = enemyStats.enemyName;
+        if (gameObject.GetComponent<enemymov>()==null)
+        {
+            gameObject.AddComponent<enemymov>();
+        }
+
+        //Instantiate(enemyStats.enemyPrefab, gameObject.transform);
+        enemyMovement = gameObject.GetComponent<enemymov>();
+        health = enemyStats.health;
+        damage = enemyStats.damage;
+        attackRate = enemyStats.attackRate;
         damageOverTime = false;
         giveTickDamage = false;
+        enemyMovement.baseSpeed = enemyStats.speed;
     }
 
     // Update is called once per frame
