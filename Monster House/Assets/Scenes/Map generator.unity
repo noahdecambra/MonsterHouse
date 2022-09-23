@@ -152,9 +152,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60995aa5a827d443bb1f4ae21860cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathTile: {fileID: 919132149155446097, guid: 215be0f6255153e489e38ccdcf5480af, type: 3}
-  gridwidth: 16
-  gridHeight: 8
+  pathCellsObj:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: a526c4ab695b2e34aab0f421cd608a3a, type: 2}
+  - {fileID: 11400000, guid: 9e4a825facfc25f4eb0a6997f3c923e5, type: 2}
+  - {fileID: 11400000, guid: a526c4ab695b2e34aab0f421cd608a3a, type: 2}
+  - {fileID: 11400000, guid: 9dbff0e5b6e411f449fd77409d60f240, type: 2}
+  - {fileID: 11400000, guid: d7cbf04a92343d848ad3f4babfbe3e22, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 308a544e94819d143a632f5828040920, type: 2}
+  - {fileID: 11400000, guid: 969dda11b08428a4ab2c9f1960fc8634, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 23e74ee7f5530e94f8631f2ff47cd55a, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  sceneryCellObj:
+  - {fileID: 11400000, guid: beaa2f7b3949d9f4e897bf878c35bca5, type: 2}
+  gridwidth: 8
+  gridHeight: 16
+  minPathLength: 30
 --- !u!4 &258381978
 Transform:
   m_ObjectHideFlags: 0

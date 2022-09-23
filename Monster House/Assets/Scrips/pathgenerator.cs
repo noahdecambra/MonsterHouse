@@ -14,7 +14,6 @@ public class pathgenerator
     {
         this.width = width;
         this.height = height;
-
     }
 
     public List<Vector2Int> generatePath()
@@ -57,17 +56,17 @@ public class pathgenerator
 
     }
 
-    private bool CellIsFree(int x , int y)
+    public bool CellIsFree(int x , int y)
     {
         return !pathCells.Contains(new Vector2Int(x, y));
     }
 
-    private bool CellIsTaken(int x, int y)
+    public bool CellIsTaken(int x, int y)
     {
         return pathCells.Contains(new Vector2Int(x, y));
     }
 
-    private int getCellNeighbourValue(int x, int y)
+    public int getCellNeighbourValue(int x, int y)
     {
         int returnValue = 0;
 
@@ -91,4 +90,6 @@ public class pathgenerator
         return returnValue;
             
     }
+
+    
 }
